@@ -105,9 +105,9 @@ def create_test_task_metadata(
         else:  # tested with node.resource_type == DbtResourceType.SEED or DbtResourceType.SNAPSHOT
             task_args["select"] = node.resource_name
     elif render_config is not None:  # TestBehavior.AFTER_ALL
-        task_args["select"] = render_config.select
+        task_args["select"] = render_config.select[0] if render_config.select else None
         task_args["selector"] = render_config.selector
-        task_args["exclude"] = render_config.exclude
+        task_args["exclude"] = render_config.exclude[0] if render_config.exclude else None
 
     return TaskMetadata(
         id=test_task_name,
