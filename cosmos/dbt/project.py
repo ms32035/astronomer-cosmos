@@ -21,7 +21,7 @@ def create_symlinks(project_path: Path, tmp_dir: Path, ignore_dbt_packages: bool
         if child_name not in ignore_paths:
             os.symlink(project_path / child_name, tmp_dir / child_name)
 
-    shutil.copy(project_path / DBT_TARGET_DIR_NAME, tmp_dir / DBT_TARGET_DIR_NAME)
+    shutil.copytree(project_path / DBT_TARGET_DIR_NAME, tmp_dir / DBT_TARGET_DIR_NAME)
 
 
 @contextmanager
