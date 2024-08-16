@@ -572,7 +572,7 @@ class DbtSourceLocalOperator(DbtSourceMixin, DbtLocalBaseOperator):
     """
 
 
-class DbtRunLocalOperator(DbtRunMixin, DbtLocalBaseOperator):
+class DbtRunLocalOperator(DbtLocalBaseOperator, DbtRunMixin):
     """
     Executes a dbt core run command.
     """
@@ -580,7 +580,7 @@ class DbtRunLocalOperator(DbtRunMixin, DbtLocalBaseOperator):
     template_fields: Sequence[str] = DbtLocalBaseOperator.template_fields + DbtRunMixin.template_fields  # type: ignore[operator]
 
 
-class DbtTestLocalOperator(DbtTestMixin, DbtLocalBaseOperator):
+class DbtTestLocalOperator(DbtLocalBaseOperator, DbtTestMixin):
     """
     Executes a dbt core test command.
     :param on_warning_callback: A callback function called on warnings with additional Context variables "test_names"
